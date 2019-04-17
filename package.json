@@ -1,0 +1,23 @@
+{
+  "name": "storybook",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/natashadronova/storybooks.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/natashadronova/storybooks/issues"
+  },
+  "homepage": "https://github.com/natashadronova/storybooks#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongoose": "^5.5.2"
+  }
+}
