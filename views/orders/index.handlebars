@@ -1,0 +1,27 @@
+
+<table class="table table-sm">
+  {{!-- <caption>Order by person</caption> --}}
+  <thead class='thead'>
+    <tr>
+      <th scope="col">Drink Type</th>
+      <th scope="col">Drink Size</th>
+      <th scope="col">Drink Milk</th>
+      <th scope="col">Drink Strength</th>
+      <th scope="col">Drink Topping</th>
+      <th scope="col">Submitted</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each orders}}
+    <tr>
+      <td>{{drinkType}}</td>
+      <td>{{drinkSize}}</td>
+      <td>{{drinkMilk}}</td>
+      <td>{{drinkStrength}}</td>
+      <td>{{drinkTopping}}</td>
+      <td>{{date}}</td>
+      <td><a class='btn btn-info btn-block' href="/orders/edit/{{id}}">Edit</a></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

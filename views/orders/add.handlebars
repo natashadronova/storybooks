@@ -1,0 +1,61 @@
+{{#each errors}}
+<div class="alert alert-danger">{{text}}</div>
+{{else}}
+  
+{{/each}}
+
+<div class="card card-body">
+  <h3>Coffee Order</h3>
+  <form action="/orders" method='post'>
+    <div class="form-group">
+      <label for='Type'>Drink Type</label>
+      <select class="form-control" id="drinkType" name="drinkType">
+        <option selected></option>
+        <option>Hot Coffee</option>
+        <option>Iced Coffee</option>
+        <option>Hot Tea</option>
+        <option>Iced Tea</option>
+        <option>Fresh juice</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Size">Size</label>
+      <select class="form-control" id="drinkSize" name="drinkSize">
+        <option selected></option>
+        <option>Small</option>
+        <option>Medium</option>
+        <option>Large</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Milk">Milk</label>
+      <select class="form-control" id="drinkMilk" name="drinkMilk">
+        <option selected></option>
+        <option>Soy Milk</option>
+        <option>Almond Milk</option>
+
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Strength">Strength</label>
+      <select class="form-control" id="drinkStrength" name='drinkStrength'>
+        <option selected></option>
+        <option>Double Shot</option>
+        <option>Decaf</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="Topping">Topping</label>
+      <select class="form-control" id="drinkTopping" name='drinkTopping'>
+        <option selected></option>
+        <option>Vanilla</option>
+        <option>Caramel</option>
+        <option>Hazelnut</option>
+      </select>
+    </div>
+    <button type="submit" class='btn btn-primary'>Submit</button>
+  </form>
+
+
+</div>
+
