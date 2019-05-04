@@ -1,5 +1,35 @@
-<div class="jumbotron text-center">
-<h1 class="display-3">{{title}}</h1>
-<p class='lead'>Add your Monday coffee orders here</p>
-<a href="/orders/add" class="btn btn-dark btn-lg">Add your next coffee order</a>
+<div class=" text-center jumbotron">
+{{!-- <h1 class="display-3">{{title}}</h1> --}}
+{{!-- <p class='lead'>Add your Monday coffee orders here</p> --}}
+<a href="/orders/add" class="btn btn-info btn-lg">Add your next coffee order</a>
 </div>
+<table class="table table-sm">
+  {{!-- <caption>Order by person</caption> --}}
+  <thead class='thead'>
+    <tr>
+      <th scope="col">Drink Type</th>
+      <th scope="col">Drink Size</th>
+      <th scope="col">Drink Milk</th>
+      <th scope="col">Drink Strength</th>
+      <th scope="col">Drink Topping</th>
+      <th scope="col">Submitted</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each orders}}
+    <tr>
+      <td>{{drinkType}}</td>
+      <td>{{drinkSize}}</td>
+      <td>{{drinkMilk}}</td>
+      <td>{{drinkStrength}}</td>
+      <td>{{drinkTopping}}</td>
+      <td>{{date}}</td>
+      <td><a class='btn btn-info btn-block' href="/orders/edit/{{id}}">Edit</a></td>
+      <td><form action="/orders/{{id}}?_method=DELETE" method="post">
+        <input type="hidden" name='_method' value='DELETE'>
+        <input type="submit" class='btn btn-danger btn-block' value="Delete">
+      </form></td>
+    </tr>
+    {{/each}}
+  </tbody>
+</table>

@@ -38,9 +38,14 @@ app.use(methodOverride('_method'));
 //INDEX route
 app.get('/',(req,res)=>{
   const title='Welcome';
-  res.render('index',{
-    title: title
-  });
+  Coffee.find({})
+  .sort({date:'desc'})
+  .then(orders=>{
+    res.render('index',{
+    title: title,
+    orders:orders
+  })
+})
 });
 
 //ABOUT route
@@ -53,14 +58,13 @@ app.get('/orders',(req,res)=>{
   Coffee.find({})
     .sort({date:'desc'})
     .then(orders=>{
-      orders.dateDiff=(Date.now() -orders.date);
-      console.log(orders.date);
       res.render('orders/index',{
         orders:orders
       });
-    });
-  
+    })
 });
+
+
 
 
 //Add Coffee form
@@ -147,7 +151,6 @@ app.put('/orders/:id',(req,res)=>{
       .then(orders=>{
         res.redirect('/orders');
       })
- 
   })
 });
 
