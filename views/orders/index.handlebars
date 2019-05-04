@@ -21,6 +21,10 @@
       <td>{{drinkTopping}}</td>
       <td>{{date}}</td>
       <td><a class='btn btn-info btn-block' href="/orders/edit/{{id}}">Edit</a></td>
+      <td><form action="/orders/{{id}}?_method=DELETE" method="post">
+        <input type="hidden" name='_method' value='DELETE'>
+        <input type="submit" class='btn btn-danger btn-block' value="Delete">
+      </form></td>
     </tr>
     {{/each}}
   </tbody>

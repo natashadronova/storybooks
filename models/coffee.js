@@ -23,6 +23,10 @@ const CoffeeSchema=new Schema({
   date:{
     type:Date,
     default: Date.now()
+  },
+  dateDiff:{
+    type:Number,
+    default: 1
   }
 });
 

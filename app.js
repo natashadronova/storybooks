@@ -45,7 +45,6 @@ app.get('/',(req,res)=>{
 
 //ABOUT route
 app.get('/about',(req,res)=>{
-  // res.send('ABOUT');
   res.render('about');
 });
 
@@ -54,6 +53,8 @@ app.get('/orders',(req,res)=>{
   Coffee.find({})
     .sort({date:'desc'})
     .then(orders=>{
+      orders.dateDiff=(Date.now() -orders.date);
+      console.log(orders.date);
       res.render('orders/index',{
         orders:orders
       });
@@ -76,8 +77,7 @@ app.get('/orders/edit/:id',(req,res)=>{
     res.render('orders/edit',{
       order:orders
     });
-  })
-  
+  });
 });
 
 //Process Form
@@ -131,15 +131,32 @@ app.put('/orders/:id',(req,res)=>{
   })
   .then(orders=>{
     //Change values
+    
+    console.log("orders.drinkType = " + orders.drinkType);
+
+    // window.addEventListener('load', ()=>{
+    //   if (document.getElementById('drinkType').value==orders.drinkType) {
+    //     console.log('yes')};
+    // }, false);
+
+    orders.drinkType = req.body.drinkType;
     // coffee.title=req.body.title;
     // idea.details=req.body.details;
 
-    // idea.save()
-    //   .then(idea=>{
-    //     res.redirect('/ideas');
-    //   })
-    res.send('ok');
+    orders.save()
+      .then(orders=>{
+        res.redirect('/orders');
+      })
+ 
   })
+});
+
+//Delete Idea
+app.delete('/orders/:id',(req,res)=>{
+  Coffee.remove({_id: req.params.id})
+    .then(()=>{
+      res.redirect('/orders');
+    })
 });
 
 const port=5000;
